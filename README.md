@@ -8,6 +8,7 @@ CRUD ReactJS Cashback App
 # Stack
 
   - ReactJS
+  - Bootstrap - Reactstrap
   - Axios
   - \* [check package.json](/package.json)
 
