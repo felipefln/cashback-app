@@ -34,6 +34,7 @@ export default function Register() {
                 <div className="form-group">
                     <label>Nome Completo:</label>
                     <input
+                        required
                         type="text"
                         className="form-control"
                         placeholder="Digite seu nome"
@@ -45,6 +46,7 @@ export default function Register() {
                 <div className="form-group">
                     <label>E-mail:</label>
                     <input
+                        required
                         type="email"
                         className="form-control"
                         placeholder="Digite seu e-mail"
@@ -55,6 +57,7 @@ export default function Register() {
                 <div className="form-group">
                     <label>Senha:</label>
                     <input
+                        required
                         type="password"
                         className="form-control"
                         placeholder="Digite sua senha"
@@ -65,6 +68,7 @@ export default function Register() {
                 <div className="form-group">
                     <label>CPF:</label>
                     <input
+                        required
                         type="text"
                         className="form-control"
                         placeholder="Digite seu CPF"
