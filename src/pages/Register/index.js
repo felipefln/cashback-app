@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import logo from '../../assets/logo.png'
 import './styles.css'
-
+import { users } from '../../database/db'
 
 export default function Register() {
     const [name, setName] = useState('')
@@ -14,7 +14,15 @@ export default function Register() {
 
     async function handleCreate(e) {
         e.preventDefault();
+        const user = {
+            name,
+            email,
+            password
+        }
 
+        users.push(user)
+        console.log(users)
+        history.push('/')
 
     }
 

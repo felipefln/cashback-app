@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { FiLogIn } from 'react-icons/fi'
 import logo from '../../assets/logo.png'
 import './styles.css'
+import { users } from '../../database/db';
 
 
 export default function Login() {
@@ -10,10 +11,26 @@ export default function Login() {
     const [email, setEmail] = useState('')
     const history = useHistory()
 
+    function handleLogin(e) {
+        e.preventDefault()
+        console.log(users)
+        console.log(email, password)
+        let check = users.map(u => {
+            return u.email === email && u.password === password
+        })
+
+        if (check[0] === true) {
+            history.push('/dashboard')
+        } else {
+            alert(`Usuário não cadastrado`)
+            history.push('/register')
+        }
+    }
+
 
     return (
 
-        <form onSubmit={() => { }}>
+        <form onSubmit={handleLogin}>
             <img src={logo} alt="logo" styles={{ height: '300px' }}></img>
             <div className="form-group">
                 <label>E-mail:</label>
@@ -41,7 +58,7 @@ export default function Login() {
                     <label className="custom-control-label" htmlFor="customCheck1">Lembrar-me</label>
                 </div>
             </div>
-            <button type="submit" className="btn btn-primary btn-block">Entrar</button>
+            <button type="submit" className="btn btn-primary btn-block" onClick={() => { }}>Entrar</button>
             <div className="footer-login">
                 <Link to="/register">
                     <FiLogIn />

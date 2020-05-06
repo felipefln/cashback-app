@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './styles.css'
 import { FiEdit, FiDelete } from 'react-icons/fi'
 import Header from '../components/Header';
+import { data } from '../../database/db';
+import ModalCadastro from '../components/Modal';
 
 export default function Dashboard() {
+    const [visible, setVisible] = useState(false)
 
+    function handleModal(result) {
+        console.log(result)
+        setVisible(true)
+    }
 
     return (
         <div>
 
             <Header />
             <div className="container-table">
-                <table class="table table-hover">
+
+                <table className="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">Código</th>
@@ -23,22 +31,29 @@ export default function Dashboard() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">4152</th>
-                            <td>R$150,00</td>
-                            <td>10/04/2018</td>
-                            <td>21%</td>
-                            <td>R$31,25</td>
-                            <td>
-                                <a href="#">
-                                    <FiEdit />
-                                </a>
-                                <a href="#" style={{ paddingLeft: '10px' }}>
-                                    <FiDelete />
-                                </a>
+                        {
+                            data.map(result => (
+                                <tr key={result.code}>
+                                    <th scope="row">{result.code}</th>
+                                    <td>R${result.value}</td>
+                                    <td>{result.date}</td>
+                                    <td>{result.cashPercent}%</td>
+                                    <td>R${result.cashValue}</td>
+                                    <td>
+                                        <button className="btn btn-light" onClick={() => handleModal(result)}>
+                                            <FiEdit />
+                                        </button>
 
-                            </td>
-                        </tr>
+                                        <button className="btn btn-light">
+                                            <FiDelete />
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            ))}
+                        {
+                            visible && <ModalCadastro visible={visible} data={data} />
+                        }
                     </tbody>
                 </table>
             </div>
