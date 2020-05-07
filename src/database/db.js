@@ -32,6 +32,7 @@ const data = [
 
 const users = [
     {
+        'name': 'Felipe',
         'email': 'felipe@felipe.com',
         'password': '123456'
     }
