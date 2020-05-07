@@ -10,6 +10,10 @@ export default function Login() {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const history = useHistory()
+    const user = {
+        email,
+        password
+    }
 
 
     function handleLogin(e) {
@@ -24,6 +28,7 @@ export default function Login() {
                 return u.password === password
             })
             if (checkPass.length >= 1) {
+                localStorage.setItem('@cashbackUser', user)
                 history.push('/dashboard')
             } else {
                 alert(`Senha incorreta`)

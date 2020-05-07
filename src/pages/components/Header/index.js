@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiLogOut } from 'react-icons/fi'
 
 import './styles.css'
@@ -9,6 +9,12 @@ import ModalCadastro from '../Modal';
 
 export default function Header() {
     const [visible, setVisible] = useState(false)
+    const history = useHistory()
+
+    function handleLogout() {
+        localStorage.clear();
+        history.push('/')
+    }
     return (
         <React.Fragment>
             <div className="container-header">
@@ -19,14 +25,10 @@ export default function Header() {
                     }
                     <div>
                         <button type="button" className="btn btn-outline-primary" onClick={() => setVisible(true)}>Cadastrar</button>
-                        <button type="button" className="btn btn-outline-danger"><FiLogOut />Logout</button>
-
-
+                        <button type="button" className="btn btn-outline-danger" onClick={() => handleLogout()}><FiLogOut />Logout</button>
                     </div>
                 </header>
-
             </div>
-
         </React.Fragment>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './styles.css'
 import { FiEdit, FiDelete } from 'react-icons/fi'
 import Header from '../components/Header';
@@ -12,6 +12,11 @@ export default function Dashboard() {
         console.log(result)
         setVisible(true)
     }
+
+    useEffect(() => {
+        const user = localStorage.getItem('@cashbackUser')
+        console.log(JSON.stringify(user))
+    }, [])
 
     return (
         <div>
