@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import logo from '../../assets/logo.png'
 import './styles.css'
 import { users } from '../../database/db'
+import { formataCPF } from "../../utils/utils";
 
 export default function Register() {
     const [name, setName] = useState('')
@@ -70,9 +71,10 @@ export default function Register() {
                     <input
                         required
                         type="text"
+                        maxlength="18"
                         className="form-control"
                         placeholder="Digite seu CPF"
-                        value={document}
+                        value={formataCPF(document)}
                         onChange={e => setDocument(e.target.value)}
                     />
                 </div>
