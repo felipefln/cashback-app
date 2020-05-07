@@ -1,5 +1,11 @@
+const id = () => {
+    return '_' + Math.random().toString(36).substr(2, 9)
+}
+
+
 const data = [
     {
+        id: id(),
         code: '4100',
         value: '15000',
         date: '10/10/10',
@@ -7,6 +13,7 @@ const data = [
         cashValue: '1200'
     },
     {
+        id: id(),
         code: '4111',
         value: '15000',
         date: '10/10/10',
@@ -14,6 +21,7 @@ const data = [
         cashValue: '1200'
     },
     {
+        id: id(),
         code: '4158',
         value: '15000',
         date: '10/10/10',
@@ -21,6 +29,7 @@ const data = [
         cashValue: '1200'
     },
     {
+        id: id(),
         code: '4178',
         value: '15000',
         date: '10/10/10',

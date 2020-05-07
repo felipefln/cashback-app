@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './styles.css'
+import { useHistory } from 'react-router-dom'
 import { FiEdit, FiDelete } from 'react-icons/fi'
 import Header from '../components/Header';
 import { data } from '../../database/db';
@@ -7,6 +8,7 @@ import ModalCadastro from '../components/Modal';
 
 export default function Dashboard() {
     const [visible, setVisible] = useState(false)
+    const history = useHistory()
 
     function handleModal(result) {
         console.log(result)
@@ -15,7 +17,9 @@ export default function Dashboard() {
 
     useEffect(() => {
         const user = localStorage.getItem('@cashbackUser')
-        console.log(JSON.stringify(user))
+        if (!user) {
+            history.push('/')
+        }
     }, [])
 
     return (
@@ -45,7 +49,7 @@ export default function Dashboard() {
                                     <td>{result.cashPercent}%</td>
                                     <td>R${result.cashValue}</td>
                                     <td>
-                                        <button className="btn btn-light" onClick={() => handleModal(result)}>
+                                        <button className="btn btn-light" onClick={() => handleModal(result.id)}>
                                             <FiEdit />
                                         </button>
 
